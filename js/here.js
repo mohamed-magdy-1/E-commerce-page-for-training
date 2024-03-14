@@ -138,7 +138,8 @@ function disabled(){
     let inputDisabled = document.querySelector(".place-order");
     let ArrProduct =  localStorage.getItem("itemsLength");
     let input =document.querySelectorAll("tr td input");
-    if(ArrProduct == 0){
+    if(ArrProduct === null || ArrProduct == 0 ){
+        
         inputDisabled.disabled= true;
     }else{
         inputDisabled.disabled= false;
@@ -189,7 +190,7 @@ localStorage.clear()
 cunt.textContent = 0;
 total.textContent = 0;
 document.querySelector(".tbody").innerHTML  = "";
-
+disabled();
 };
 
 
