@@ -50,7 +50,7 @@ for (let i = 0; i < finalArray.length; i++) {
                 <td><button class="remove" onclick="delateData(${i})" style="cursor: pointer; user-select: none;">x</button></td>
                 <td><img src="${finalArray[i].img}" alt="photo"></td>
                 <td>${finalArray[i].title}</td>
-                <td><input oninput="changePrice()"  type="number"  value="${finalArray[i].amount}"></td>
+                <td><input  onchange="changePrice()"  type="number"  value="${finalArray[i].amount}"></td>
                 <td>$${ +finalArray[i].amount * finalArray[i].price}</td>
             </tr>
             `;
@@ -65,7 +65,7 @@ showData();
 function changePrice(){
 let input =document.querySelectorAll(" tr td input");
 input.forEach((el)=>{
-if (el.value < 1) {el.value = "";};
+if (el.value < 1 ) {el.value = 0;};
 let iOfFinalArray =el.parentElement.parentElement.dataset.i;
 finalArray[iOfFinalArray].amount = el.value;
 localStorage.setItem("products", JSON.stringify(finalArray));
