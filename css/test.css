@@ -165,7 +165,6 @@ h5::before{
 .here button{
     user-select: none;
     padding: 10px;
-    background-color: #c7c10d;
     outline: none;
     border: none;
     position: relative;
@@ -197,6 +196,10 @@ h5::before{
 
 .here .cunt p{
 color: white;
+}
+
+.click{
+    color: white;
 }
 
 .here button a{
@@ -257,6 +260,16 @@ th{
     border: 1px solid #dddddd;
 }
 
+tr{
+    width:100%;
+    
+}
+
+.wring{
+    background-color: #ff00004a;
+}
+
+
 
 td img{
 width: 50px;
@@ -282,7 +295,6 @@ td, th {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
-
 
 
 
@@ -326,7 +338,7 @@ td, th {
 .place-order{
     padding: 15px 13px;
     width: 150px;
-    background-color: green;
+    background-color: #30c896;
     color: white;
     font-weight: 600;
     border: none;
@@ -335,6 +347,9 @@ td, th {
     cursor: pointer;
 }
 
+.place-order:disabled{
+    background-color: #30c89577;
+}
 
 
 

@@ -42,6 +42,7 @@ localStorage.setItem("products", JSON.stringify(finalArray));
 
 //DOWN---------------------------------------------------------
 function showData(){
+
     let table = '';
 for (let i = 0; i < finalArray.length; i++) {
             table +=`
@@ -54,7 +55,8 @@ for (let i = 0; i < finalArray.length; i++) {
             </tr>
             `;
 };
-document.querySelector(".table1").innerHTML = table;
+document.querySelector(".tbody").innerHTML = table;
+
 };
 showData();
 
@@ -63,20 +65,35 @@ showData();
 function changePrice(){
 let input =document.querySelectorAll(" tr td input");
 input.forEach((el)=>{
-if (el.value < 1) {el.value = 1;};
+if (el.value < 1) {el.value = "";};
 let iOfFinalArray =el.parentElement.parentElement.dataset.i;
 finalArray[iOfFinalArray].amount = el.value;
 localStorage.setItem("products", JSON.stringify(finalArray));
 TotalPrice();
 textCunt();
 showData();
+wring();
+disabled();
 });
 };
 //DOWN---------------------------------------------------------
 
 
 
-
+//ad wring to tr 
+//UP---------------------------------------------------------
+function wring(){
+    let input =document.querySelectorAll(" tr td input");
+    input.forEach((el)=>{
+    if (el.value == 0) {
+        el.parentElement.parentElement.classList.add("wring");
+    }else{
+        el.parentElement.parentElement.classList.remove("wring");
+    }
+    });
+    };
+    //DOWN---------------------------------------------------------
+    wring()
 
 
 
@@ -108,11 +125,31 @@ function delateData(el){
     TotalPrice();
     textCunt();
     showData();
+    disabled()
+    
 };
 //DOWN---------------------------------------------------------
 
 
 
+// add disabled for input
+
+function disabled(){
+    let inputDisabled = document.querySelector(".place-order");
+    let ArrProduct =  localStorage.getItem("itemsLength");
+    let input =document.querySelectorAll("tr td input");
+    if(ArrProduct == 0){
+        inputDisabled.disabled= true;
+    }else{
+        inputDisabled.disabled= false;
+    }
+    input.forEach((el)=>{
+    if(el.value == 0){
+        inputDisabled.disabled= true;
+    }
+    });
+}
+disabled();
 
 
 
@@ -151,7 +188,7 @@ Swal.fire({
 localStorage.clear()
 cunt.textContent = 0;
 total.textContent = 0;
-document.querySelector(".table1").innerHTML  = "";
+document.querySelector(".tbody").innerHTML  = "";
 
 };
 
